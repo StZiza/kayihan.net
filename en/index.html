@@ -378,9 +378,9 @@ section[id]{scroll-margin-top:60px}
   <section class="block" id="instagram">
     <div class="wrap">
       <div class="title"><h2>Instagram</h2></div>
-      <!-- Paste the Behold JSON feed URL for @tidesintimes into data-feed below (https://feeds.behold.so/...). If it stays empty, the tiles link to the profile page. -->
+      <!-- data/instagram.json and img/ig/ are updated daily from Behold by .github/workflows/instagram.yml. -->
       <div class="igs">
-      <div class="ig" data-feed="https://feeds.behold.so/uQB1qMwA7jNGVWDD8DhD">
+      <div class="ig" data-feed="../data/instagram.json">
         <div class="ig-head"><svg><use href="#i-instagram"/></svg><div><a class="h" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener">@tidesintimes</a><span class="lang">EN</span><small>Short stories born from my photographs</small></div><a class="btn" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener">Follow</a></div>
         <div class="ig-grid"><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a></div>
       </div>
@@ -474,10 +474,11 @@ section[id]{scroll-margin-top:60px}
   if (m) { m.href = 'mailto:' + u + '@' + d; document.getElementById('mail-text').textContent = u + '@' + d; }
 
 
-  // Instagram: show the last 6 posts if a Behold JSON feed is set.
+  // Instagram: show the latest posts stored on this site.
   Array.prototype.forEach.call(document.querySelectorAll('.ig[data-feed]'), function(panel){
     var url = panel.getAttribute('data-feed');
     if (!url) return;
+    var base = url.replace(/data\/instagram\.json$/, '');
     fetch(url).then(function(r){ return r.json(); }).then(function(d){
       var posts = (d.posts || []).slice(0, 6);
       if (!posts.length) return;
@@ -485,8 +486,8 @@ section[id]{scroll-margin-top:60px}
       var grid = panel.querySelector('.ig-grid');
       var rest = Array.prototype.slice.call(grid.children, posts.length).map(function(t){ return t.outerHTML; }).join('');
       grid.innerHTML = posts.map(function(p){
-        var img = (p.sizes && p.sizes.medium && p.sizes.medium.mediaUrl) || p.thumbnailUrl || p.mediaUrl;
-        var alt = p.altText || clip(p.prunedCaption || p.caption || '', 90);
+        var img = base + p.image;
+        var alt = clip(p.alt || '', 90);
         return '<a class="tile has-img" href="'+esc(p.permalink)+'" target="_blank" rel="noopener"><img loading="lazy" src="'+esc(img)+'" alt="'+esc(alt)+'"></a>';
       }).join('') + rest;
     }).catch(function(){ /* keep the profile-linked tiles */ });
