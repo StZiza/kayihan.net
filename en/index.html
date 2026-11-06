@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>H. Aziz Kayıhan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="H. Aziz Kayıhan: astronomer, teacher and science writer. Editor of All About Space Türkiye and How It Works Türkiye.">
+<link rel="alternate" hreflang="tr" href="https://kayihan.net/">
+<link rel="alternate" hreflang="en" href="https://kayihan.net/en/">
+<link rel="alternate" type="application/atom+xml" title="H.A.K. blog" href="http://blog.kayihan.net/feeds/posts/default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: the blog's own frame (white masthead, dark menu bar with a yellow active tab, boxed section titles), no carousel; one centred column with a two-up intro. */
+:root{
+  --paper:#ffffff;
+  --soft:#f5f5f4;
+  --ink:#2e2e2e;
+  --bar:#202020;
+  --muted:#7a7a78;
+  --rule:#dcdcda;
+  --yellow:#ffd439;
+  --todo:#fff3bf;
+  --display:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --body:"Noto Sans", "Droid Sans", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.75 var(--body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
+
+/* Masthead */
+.masthead .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-block:34px;gap:16px}
+.social{display:flex;gap:8px}
+.social a{width:30px;height:30px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;text-decoration:none;transition:background .2s,color .2s}
+.social a:hover{background:var(--bar);color:var(--paper)}
+.social svg{width:13px;height:13px;fill:currentColor}
+.logo{display:block;text-decoration:none;justify-self:center}
+.logo img{display:block;width:190px;height:auto}
+.logo-fallback{display:none;border:2px solid var(--ink);padding:6px 16px 4px;text-align:center}
+.logo-fallback b{display:block;font:300 34px/1 var(--display);letter-spacing:4px}
+.logo-fallback small{font:400 10px/1.6 var(--display);letter-spacing:.5px}
+.langs{justify-self:end;display:flex;gap:6px;font:400 12px/1 var(--display);letter-spacing:1px}
+.langs a,.langs span{border:1px solid var(--rule);padding:9px 11px;text-decoration:none}
+.langs span{background:var(--bar);color:var(--paper);border-color:var(--bar)}
+.langs a:hover{border-color:var(--ink)}
+
+/* Menu bar */
+.bar{background:var(--bar);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.bar .wrap{display:flex;overflow-x:auto;scrollbar-width:none}
+.bar .wrap > a:first-child{margin-left:auto}
+.bar .wrap > a:last-child{margin-right:auto}
+.bar .wrap::-webkit-scrollbar{display:none}
+.bar a{color:#fff;text-decoration:none;font:400 14px/1 var(--display);text-transform:uppercase;padding:14px 19px;white-space:nowrap}
+.bar a:hover{color:var(--yellow)}
+.bar a.on{background:var(--yellow);color:var(--bar)}
+
+/* Draft note */
+.draft{background:var(--soft);border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted)}
+.draft .wrap{padding-block:10px}
+mark.todo{background:var(--todo);color:var(--ink);padding:0 4px;border-bottom:1px dashed #c9a400}
+
+/* Intro */
+.intro .wrap{display:grid;grid-template-columns:260px minmax(0,1fr);gap:56px;align-items:center;padding-block:64px 56px}
+.portrait{text-align:center}
+.portrait .ph{width:200px;height:200px;border-radius:50%;margin:0 auto 14px;overflow:hidden;background:var(--bar);display:grid;place-items:center}
+.portrait .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait .ph span{display:none;color:var(--yellow);font:700 44px/1 var(--display);letter-spacing:3px}
+.portrait p{margin:0;font:600 13px/1.5 var(--display)}
+.eyebrow{font:400 12px/1 var(--display);letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+h1{font:700 44px/1.1 var(--display);letter-spacing:1px;margin:0 0 18px;text-wrap:balance}
+.lead{font-size:17px;max-width:60ch;margin:0 0 26px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;border:1px solid var(--ink);padding:10px 18px;font:400 12px/1 var(--body);letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s}
+.btn:hover{background:var(--bar);color:var(--paper)}
+.btn.solid{background:var(--bar);color:var(--paper)}
+.btn.solid:hover{background:var(--yellow);color:var(--bar);border-color:var(--yellow)}
+.intro .facts-wrap{display:block;padding-block:0 8px}
+.facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.facts li{padding:18px 16px;font-size:13px;color:var(--muted);border-left:1px solid var(--rule)}
+.facts li:first-child{border-left:0;padding-left:0}
+.facts b{display:block;color:var(--ink);font:600 14px/1.4 var(--display);margin-bottom:4px}
+
+/* Sections */
+section.block{padding-block:56px}
+section.block + section.block{border-top:1px solid var(--rule)}
+.title{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #777;padding:10px 16px;max-width:360px;margin:0 auto 36px;font:600 17px/1.2 var(--display);letter-spacing:1.5px}
+.title::before,.title::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--ink);flex:none}
+.title h2{font:inherit;margin:0;text-align:center;flex:1}
+.prose{max-width:66ch;margin:0 auto}
+.prose p{margin:0 0 1.1em}
+
+/* Work */
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 56px}
+.work h3{font:600 13px/1 var(--display);letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;padding-bottom:12px;border-bottom:2px solid var(--yellow);display:inline-block}
+.work ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:16px}
+.work li{min-width:0}
+.work .role{font:600 15px/1.4 var(--display)}
+.work .org{display:block}
+.work .note{display:block;color:var(--muted);font-size:13.5px}
+.pubs{margin-top:52px;max-width:820px;margin-left:auto;margin-right:auto}
+.pubs h3{font:600 13px/1 var(--display);letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;padding-bottom:12px;border-bottom:2px solid var(--yellow);display:inline-block}
+.pubs ol{list-style:none;margin:14px 0 0;padding:0}
+.pubs li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.pubs .y{font:600 13px/1.6 var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.pubs .pt{font:600 15px/1.4 var(--display)}
+.pubs .pv{display:block;color:var(--muted);font-size:13.5px}
+.pubs a{color:var(--ink)}
+.pubs .count{color:var(--muted);font-size:14px;margin:14px 0 0}
+
+/* Writing */
+.posts{list-style:none;margin:0;padding:0}
+.posts li{display:grid;grid-template-columns:130px minmax(0,1fr);gap:24px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.posts li:first-child{border-top:1px solid var(--rule)}
+.posts time{font:400 12px/1.8 var(--display);color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+.posts a.t{font:700 19px/1.3 var(--display);letter-spacing:.5px;text-decoration:none}
+.posts a.t:hover{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px}
+.posts p{margin:6px 0 0;color:var(--muted);font-size:14px}
+.lang{font:600 10px/1 var(--display);letter-spacing:1px;border:1px solid var(--rule);padding:3px 5px;margin-left:8px;vertical-align:3px;color:var(--muted);white-space:nowrap}
+.sub{font:600 13px/1 var(--display);letter-spacing:2px;text-transform:uppercase;margin:48px 0 6px}
+.subnote{color:var(--muted);font-size:14px;margin:0 0 20px}
+.more{display:block;margin-top:28px;border:1px solid var(--ink);padding:11px;text-align:center;font:400 12px/1 var(--body);letter-spacing:1px;text-transform:uppercase;text-decoration:none}
+.more:hover{background:var(--bar);color:var(--paper)}
+
+/* Life */
+.life{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.life div{padding:22px 22px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);min-width:0}
+.life h3{margin:0 0 6px;font:600 16px/1.3 var(--display)}
+.life .ic{width:52px;height:52px;display:block;margin-bottom:14px;fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.life .ic .y{fill:var(--yellow)}
+.life .ic .p{fill:var(--paper)}
+.life div:hover .ic{transform:rotate(-4deg)}
+.life .ic{transition:transform .25s}
+.life p{margin:0;font-size:14px;color:var(--muted)}
+.life a{color:var(--ink)}
+
+/* Contact */
+.contact-lead{text-align:center;margin:-12px auto 28px;max-width:60ch;color:var(--muted)}
+.contact-sub{max-width:820px;margin:36px auto 12px;font:600 13px/1 var(--display);letter-spacing:2px;text-transform:uppercase}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;max-width:820px;margin:0 auto}
+.contact > a,.contact > div{display:flex;align-items:center;gap:14px;border:1px solid var(--rule);padding:14px 16px;text-decoration:none;min-width:0}
+.contact > a:hover{border-color:var(--ink)}
+.contact > a:hover svg{color:var(--ink)}
+.contact svg{width:22px;height:22px;flex:none;color:var(--muted);transition:color .2s}
+.contact span{min-width:0;overflow-wrap:anywhere}
+.contact small{display:block;font:400 11px/1 var(--display);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.contact b{font:600 14px/1.3 var(--display)}
+.work .icons{display:flex;gap:12px;margin-top:8px}
+.work .icons a{color:var(--muted);display:inline-flex}
+.work .icons a:hover{color:var(--ink)}
+.work .icons svg{width:18px;height:18px}
+.subnote a{color:var(--ink)}
+/* Instagram */
+.igs{max-width:1000px;margin:0 auto;display:grid;gap:22px}
+.ig{min-width:0}
+.ig-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.ig-head > svg{width:26px;height:26px;flex:none;color:var(--muted)}
+.ig-head > div{flex:1;min-width:0}
+.ig-head .h{font:700 17px/1.3 var(--display);text-decoration:none}
+.ig-head .h:hover{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px}
+.ig-head small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+.ig-head .btn{padding:9px 14px;flex:none}
+.ig-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.ig-also{display:flex;align-items:center;gap:14px;border:1px solid var(--rule);padding:16px 18px}
+.ig-also > svg{width:22px;height:22px;flex:none;color:var(--muted)}
+.ig-also > div{flex:1;min-width:0}
+.ig-also .h{font:700 15px/1.3 var(--display);text-decoration:none}
+.ig-also .h:hover{text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px}
+.ig-also small{display:block;color:var(--muted);font-size:13.5px;line-height:1.45}
+.ig-also .btn{padding:9px 14px;flex:none}
+.tile{position:relative;aspect-ratio:1;max-width:100%;background:var(--soft);display:grid;place-items:center;color:var(--rule);overflow:hidden;transition:background .2s,color .2s}
+.tile svg{width:22px;height:22px}
+.tile:hover{background:var(--bar);color:var(--yellow)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s,opacity .2s}
+.tile.has-img:hover img{transform:scale(1.04);opacity:.85}
+@media (max-width:820px){ .ig-grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (max-width:560px){ .ig-head,.ig-also{flex-wrap:wrap} }
+
+footer{background:var(--bar);color:#bdbdbd;font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-block:22px}
+footer a{color:#fff}
+
+@media (max-width:820px){
+  .intro .wrap{grid-template-columns:1fr;gap:28px;padding-block:44px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts li:nth-child(3){border-left:0;padding-left:0}
+  .work{grid-template-columns:1fr}
+  .life{grid-template-columns:repeat(2,minmax(0,1fr))}
+  h1{font-size:34px}
+}
+@media (max-width:560px){
+  .masthead .wrap{grid-template-columns:1fr;justify-items:center;padding-block:24px}
+  .langs{justify-self:center}
+  .bar .wrap{justify-content:flex-start}
+  .bar a{padding:13px 14px;font-size:13px}
+  .posts li{grid-template-columns:1fr;gap:4px}
+  .life{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
+  .facts li{border-left:0;padding-left:0;border-top:1px solid var(--rule)}
+  .facts li:first-child{border-top:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:60px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></symbol>
+  <symbol id="i-spotify" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.66.48-1.02.24-2.82-1.74-6.36-2.1-10.56-1.14-.42.12-.78-.18-.9-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.3 1.02zm1.44-3.3c-.3.42-.84.6-1.26.3-3.24-1.98-8.16-2.58-11.94-1.38-.48.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14C9.6 9.9 15 10.56 18.72 12.84c.36.18.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.3c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.72 1.62.54.3.72 1.02.42 1.56-.3.42-1.02.6-1.56.3z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zM7.1 20.5H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.3-.5-1.5.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="2" y="4.5" width="20" height="15" rx="1.5"/><path d="M2.8 5.5 12 13l9.2-7.5"/></g></symbol>
+  <symbol id="i-web" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c2.8 3 4 6.4 4 10s-1.2 7-4 10c-2.8-3-4-6.4-4-10s1.2-7 4-10z"/></g></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M15.5 4.5l4 4L8 20H4v-4L15.5 4.5z"/><path d="M13.5 6.5l4 4"/></g></symbol>
+</svg>
+<div lang="en">
+
+<header class="masthead">
+  <div class="wrap">
+    <nav class="social" aria-label="Social media">
+      <a href="https://www.instagram.com/gokgezen/" aria-label="Instagram" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg></a>
+      <a href="https://www.youtube.com/@AhtapotClub" aria-label="YouTube" target="_blank" rel="noopener"><svg><use href="#i-youtube"/></svg></a>
+      <a href="https://www.linkedin.com/in/stziza/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg></a>
+      <a href="https://github.com/stziza" aria-label="GitHub" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg></a>
+    </nav>
+    <a class="logo" href="#top" aria-label="H.A.K. home">
+      <img src="../img/hak-logo.png" alt="H.A.K. · H. Aziz Kayıhan" width="190" height="109" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="logo-fallback"><b>H.A.K.</b><small>H. Aziz Kayıhan</small></span>
+    </a>
+    <div class="langs" aria-label="Language">
+      <a href="../" hreflang="tr" lang="tr">TR</a>
+      <span aria-current="true">EN</span>
+    </div>
+  </div>
+</header>
+
+<nav class="bar" aria-label="Sections">
+  <div class="wrap">
+    <a href="#top" class="on" data-spy="top">Home</a>
+    <a href="#about" data-spy="about">About</a>
+    <a href="#cv" data-spy="cv">CV</a>
+    <a href="#writing" data-spy="writing">Writing</a>
+    <a href="#instagram" data-spy="instagram">Instagram</a>
+    <a href="#life" data-spy="life">Life</a>
+    <a href="#contact" data-spy="contact">Contact</a>
+    <a href="http://blog.kayihan.net/" target="_blank" rel="noopener">Blog ↗</a>
+    <a href="../" hreflang="tr" lang="tr">Türkçe</a>
+  </div>
+</nav>
+
+
+<main id="top">
+  <section class="intro" aria-label="Introduction">
+    <div class="wrap">
+      <div class="portrait">
+        <div class="ph">
+          <img src="../img/portre.jpg" alt="H. Aziz Kayıhan" width="200" height="200" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span>HAK</span>
+        </div>
+        <p>Astronomer · Teacher<br>Science Writer</p>
+      </div>
+      <div>
+        <p class="eyebrow">Astronomy · Education · Science communication</p>
+        <h1>H. Aziz Kayıhan</h1>
+        <p class="lead">I am an astronomer, a teacher and a science writer. For more than twenty years I have been explaining the sky: sometimes in a classroom, sometimes at a telescope during an observing festival, and sometimes in the pages of All About Space Türkiye and How It Works Türkiye, the magazines I edit.</p>
+        <div class="btns">
+          <a class="btn solid" href="#cv">CV</a>
+          <a class="btn" href="#writing">My writing</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap facts-wrap">
+      <ul class="facts">
+        <li><b>Editor</b>All About Space Türkiye and How It Works Türkiye</li>
+        <li><b>IAU National Outreach Coordinator</b>International Astronomical Union, since 2024</li>
+        <li><b>Astrophysics instructor</b>Johns Hopkins CTY summer programs</li>
+        <li><b>40 countries, 77 provinces</b>and the route isn't finished yet</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="title"><h2>About</h2></div>
+      <div class="prose">
+        <p>I was born in Denizli in July 1986. That is where I first discovered both photography and theatre, during my high school years. Then I moved to Kayseri, and while studying Astronomy and Space Sciences at Erciyes University I never left the stage.</p>
+        <p>I started explaining astronomy in 2005 and have not stopped since: in schools, in planetariums, at TÜBİTAK's observing festivals, and even on mountain roads in the middle of the night, looking up with fellow hikers. This path also led me to international work. At the Space Generation Advisory Council (SGAC) I served first as Türkiye's representative and then as Middle East Regional Coordinator. Since 2024 I have been the International Astronomical Union's National Outreach Coordinator for Türkiye. Asteroit Kâşifi, where I go asteroid hunting with students, is one of my favourite stops along the way.</p>
+        <p>These days I live in Antalya. I teach astronomy and English at Antalya Sınav Koleji, and in the summers I teach astrophysics to high school students in the CTY program at Johns Hopkins University. Since 2020 I have also worked as a freelance science writer and editor, and every issue of All About Space Türkiye and How It Works Türkiye carries my work.</p>
+        <p>I haven't stopped being a student either. I am continuing my master's degree in Space Sciences and Technologies at Akdeniz University, and studying for an associate degree in media and communication at Anadolu University.</p>
+        <p>The rest of my time goes to a rock wall, a trail or the saddle of a bike. I write more than I read, and the blog I started in 2007 is still going. My newest project is <em>Tides in Times</em>, where short English stories accompany my photographs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="cv">
+    <div class="wrap">
+      <div class="title"><h2>CV</h2></div>
+      <div class="work">
+        <div>
+          <h3>Today</h3>
+          <ul>
+            <li><span class="role">Editor and science writer</span><span class="org">All About Space Türkiye · How It Works Türkiye</span><span class="note">Since 2020</span></li>
+            <li><span class="role">Astronomy and English teacher</span><span class="org">Antalya Sınav Koleji</span><span class="note">2017–2021 and since 2024</span></li>
+            <li><span class="role">Astrophysics instructor</span><span class="org">Johns Hopkins University CTY, USA</span><span class="note">Summer programs since 2018</span></li>
+            <li><span class="role">National Outreach Coordinator</span><span class="org">International Astronomical Union (IAU)</span><span class="note">Since 2024</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Science communication</h3>
+          <ul>
+            <li><span class="role">Host and content creator</span><span class="org"><a href="https://www.ahtapot.club/" target="_blank" rel="noopener">Ahtapot</a></span><span class="note">Astronomy videos, live streams and podcasts in Turkish, since 2020</span>
+              <span class="icons">
+                <a href="https://www.youtube.com/@AhtapotClub" aria-label="Ahtapot YouTube" target="_blank" rel="noopener"><svg><use href="#i-youtube"/></svg></a>
+                <a href="https://open.spotify.com/show/0G1cSHroA2aiNYug60f56q" aria-label="Ahtapot Spotify" target="_blank" rel="noopener"><svg><use href="#i-spotify"/></svg></a>
+                <a href="https://www.instagram.com/ahtapot.club/" aria-label="Ahtapot Instagram" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg></a>
+                <a href="https://www.ahtapot.club/" aria-label="ahtapot.club" target="_blank" rel="noopener"><svg><use href="#i-web"/></svg></a>
+              </span>
+            </li>
+            <li><span class="role">Founder and coordinator</span><span class="org"><a href="https://asteroidkasifi.com/" target="_blank" rel="noopener">Asteroit Kâşifi</a></span><span class="note">National asteroid search campaigns for students, in partnership with IASC, since 2017</span></li>
+            <li><span class="role">Expert astronomer</span><span class="org">TÜBİTAK National Sky Observation Festival · TÜBİTAK National Observatory</span><span class="note">2013–2018 and 2021–2022</span></li>
+            <li><span class="role">Middle East Regional Coordinator</span><span class="org">Space Generation Advisory Council (SGAC)</span><span class="note">2010–2015; previously Türkiye representative</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Awards and achievements</h3>
+          <ul>
+            <li><span class="role">Vatican Observatory Summer School scholarship</span><span class="org">Vatican Observatory</span><span class="note">2014; SuperVOSS 2019 (partial)</span></li>
+            <li><span class="role">Near-Earth asteroid confirmations</span><span class="org">2012 PA20, 2012 QD10 and 2012 QU14</span><span class="note">2012</span></li>
+            <li><span class="role">Best Poster Award</span><span class="org">18th National Astronomy Congress, Turkish Astronomical Society</span><span class="note">2012</span></li>
+            <li><span class="role">Young Leader Award</span><span class="org">Space Generation Congress, SGAC</span><span class="note">2011; plenary speaker at IAC 2011 the same year</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Education</h3>
+          <ul>
+            <li><span class="role">Master's degree, Space Sciences and Technologies</span><span class="org">Akdeniz University</span><span class="note">In progress</span></li>
+            <li><span class="role">Associate degree, Media and Communication</span><span class="org">Anadolu University</span><span class="note">In progress</span></li>
+            <li><span class="role">Bachelor's degree, Astronomy and Space Sciences</span><span class="org">Erciyes University</span></li>
+            <li><span class="role">High school</span><span class="org">Türk Eğitim Vakfı Anadolu Lisesi, Denizli</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pubs">
+        <h3>Selected publications</h3>
+        <ol>
+          <li><span class="y">2024</span><div><span class="pt">Problems Caused by Incorrectly Translated Astronomical Terms and Standardization of Turkish Astronomical Terms</span><span class="pv">Kayıhan H.A., Çoban S. · 23rd National Astronomy and Space Sciences Congress, Istanbul</span></div></li>
+          <li><span class="y">2022</span><div><span class="pt">Detailed Information Regarding 21 Provisional Asteroid Discoveries from Turkey</span><span class="pv">Kayıhan H.A. et al. · 22nd National Astronomy and Space Sciences Congress, İzmir</span></div></li>
+          <li><span class="y">2020</span><div><span class="pt"><a href="https://dergipark.org.tr/en/pub/tjaa/issue/52859/830534" target="_blank" rel="noopener">Troubles on Applying the Astronomy Course Contents for Elementary, Middle and High Schools</a></span><span class="pv">Kayıhan H.A., Yıldız S. · Turkish Journal of Astronomy and Astrophysics</span></div></li>
+          <li><span class="y">2013</span><div><span class="pt"><a href="https://f001.backblazeb2.com/file/astronomgunlugu/CV/2013_IAC2013_SGC_SocietyPaper.pdf" target="_blank" rel="noopener">Space for Humanitarian Relief: The Centre for Responsive Information for Safety and Security (CRISIS)</a></span><span class="pv">Findlay R., Kayıhan H.A. et al. · 64th International Astronautical Congress, Beijing</span></div></li>
+        </ol>
+        <p class="count">23 papers and reports at national and international congresses and journals since 2008. The full list will appear here along with my updated CV.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="writing">
+    <div class="wrap">
+      <div class="title"><h2>Writing</h2></div>
+      <div class="prose" style="max-width:820px">
+        <p class="sub" style="margin-top:0">From the blog</p>
+        <p class="subnote">My personal blog, written in Turkish. New posts appear here automatically.</p>
+        <ul class="posts" id="posts"></ul>
+        <a class="more" href="http://blog.kayihan.net/" target="_blank" rel="noopener">All posts on the blog ↗</a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="instagram">
+    <div class="wrap">
+      <div class="title"><h2>Instagram</h2></div>
+      <!-- Paste the Behold JSON feed URL for @tidesintimes into data-feed below (https://feeds.behold.so/...). If it stays empty, the tiles link to the profile page. -->
+      <div class="igs">
+      <div class="ig" data-feed="">
+        <div class="ig-head"><svg><use href="#i-instagram"/></svg><div><a class="h" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener">@tidesintimes</a><span class="lang">EN</span><small>Short stories born from my photographs</small></div><a class="btn" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener">Follow</a></div>
+        <div class="ig-grid"><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes on Instagram"><svg><use href="#i-instagram"/></svg></a></div>
+      </div>
+      <div class="ig-also">
+        <svg><use href="#i-instagram"/></svg>
+        <div><a class="h" href="https://www.instagram.com/gokgezen/" target="_blank" rel="noopener">@gokgezen</a><small>My account for astronomy news, sky events and current developments.</small></div>
+        <a class="btn" href="https://www.instagram.com/gokgezen/" target="_blank" rel="noopener">Follow</a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="life">
+    <div class="wrap">
+      <div class="title"><h2>Life</h2></div>
+      <div class="life">
+        <div><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><path class="p" d="M10 44 15 4h20l3 40z"/><path d="M30 4c0 9-4 13-4 20"/><path class="y" d="M20 26c1.5-3 6-3 7 0 .8 2.4-1.5 4-3.6 3.8-2.6-.2-4.4-1.6-3.4-3.8z"/><circle cx="20" cy="12" r="2"/><path d="M28 16c1.2-1 3-.6 3.2.9.2 1.3-1.4 2-2.5 1.6-1-.4-1.4-1.6-.7-2.5z"/><circle cx="31" cy="34" r="2"/><path d="M16 36c1-1 2.8-.8 3 .6.2 1.2-1.2 1.8-2.2 1.4-.9-.3-1.3-1.2-.8-2z"/></svg><h3>Rock climbing and bouldering</h3><p>Bouldering at the gym, and real rock whenever I get the chance. Finally solving a route is a joy of its own.</p></div>
+        <div><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><circle class="y" cx="36" cy="11" r="4.5"/><path d="M3 40 17 17l8 12 6-8 14 19z"/><path d="M14 40c3-4 9-5 10-9" stroke-dasharray="2 3.5"/></svg><h3>Trekking</h3><p>I am a trekking leader certified by the Turkish Mountaineering Federation. On night hikes we look up at the sky together.</p></div>
+        <div><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><path class="y" d="M35 6l1.2 2.8L39 10l-2.8 1.2L35 14l-1.2-2.8L31 10l2.8-1.2z"/><path d="M6 35 22 9l16 26z"/><path d="M18 35l4-10 4 10"/><path d="M4 42c3-2.5 6-2.5 9 0s6 2.5 9 0 6-2.5 9 0 6 2.5 9 0 4-1.6 4-1.6"/></svg><h3>Outdoors</h3><p>I camp, paddle a canoe and swim in the sea whenever I can. Any excuse to escape the city lights will do; a tent and a dark sky are more than enough.</p></div>
+        <div><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="12" cy="31" r="8"/><circle cx="36" cy="31" r="8"/><circle class="y" cx="12" cy="31" r="2.5"/><circle class="y" cx="36" cy="31" r="2.5"/><path d="M12 31l8-13h11l5 13M20 18l5 13 6-13M17 14h7M31 18l-2-6h5"/></svg><h3>Cycling</h3><p>Part of my life for nearly thirty years, and for many of them my most loyal way of getting around. When I ride, my action camera usually comes along.</p></div>
+        <div><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><rect class="p" x="5" y="14" width="38" height="26" rx="3"/><path d="M17 14l3-5h8l3 5"/><circle cx="24" cy="27" r="8"/><circle class="y" cx="24" cy="27" r="3.5"/><path d="M36 19h2"/></svg><h3>Photography</h3><p>I shoot digital, analog and, more and more, on my phone. Some of the stories on <a href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener">@tidesintimes</a> begin with shots from my pocket.</p></div>
+        <div><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><path class="y" d="M22 17h20v10a10 10 0 0 1-20 0z"/><path d="M28 23h2M35 23h2M29 30c1.5-1.5 4.5-1.5 6 0"/><path class="p" d="M6 9h20v10a10 10 0 0 1-20 0z"/><path d="M11 15h3M18 15h3M12 21c2 2 5 2 7 0"/></svg><h3>Theatre</h3><p>I started in high school in Denizli and carried on at university in Kayseri. I plan to return to the stage soon.</p></div>
+        <div><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><rect class="p" x="6" y="19" width="36" height="22" rx="2"/><path class="y" d="M6 19l34-8 1.6 6.6L7.6 25.6z"/><path d="M14 17l3 6M23 15l3 6M32 13l3 6"/><path d="M20 27v9l8-4.5z"/></svg><h3>Film, series and games</h3><p>Everything I watch is logged on <a href="https://trakt.tv/users/stziza" target="_blank" rel="noopener">Trakt</a>. If I find a free evening, I'm usually playing something on <a href="https://steamcommunity.com/id/stziza/" target="_blank" rel="noopener">Steam</a>.</p></div>
+        <div><svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path class="y" d="M24 11l4.5 13h-9z"/><path class="p" d="M24 37l-4.5-13h9z"/><path d="M24 4v3M24 41v3M4 24h3M41 24h3"/></svg><h3>Travel</h3><p>I have seen 40 countries so far, and astronomy opened the door to most of them. In Türkiye I have visited 77 of the 81 provinces, and I hope to reach the last four soon.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="title"><h2>Contact</h2></div>
+      <p class="contact-lead">Write to me with a question, an idea for working together, or just to say hello.</p>
+      <div class="contact">
+        <a id="mail" href="#contact"><svg><use href="#i-mail"/></svg><span><small>Email</small><b id="mail-text">aziz [at] kayihan.net</b></span></a>
+        <a href="https://www.instagram.com/gokgezen/" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span><small>Instagram</small><b>@gokgezen</b></span></a>
+        <a href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span><small>Instagram · Tides in Times</small><b>@tidesintimes</b></span></a>
+        <a href="https://www.linkedin.com/in/stziza/" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg><span><small>LinkedIn</small><b>in/stziza</b></span></a>
+        <a href="https://github.com/stziza" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg><span><small>GitHub</small><b>stziza</b></span></a>
+        <a href="http://blog.kayihan.net/" target="_blank" rel="noopener"><svg><use href="#i-pen"/></svg><span><small>Blog</small><b>blog.kayihan.net</b></span></a>
+      </div>
+      <p class="contact-sub">Ahtapot</p>
+      <div class="contact">
+        <a href="https://www.youtube.com/@AhtapotClub" target="_blank" rel="noopener"><svg><use href="#i-youtube"/></svg><span><small>YouTube</small><b>AhtapotClub</b></span></a>
+        <a href="https://open.spotify.com/show/0G1cSHroA2aiNYug60f56q" target="_blank" rel="noopener"><svg><use href="#i-spotify"/></svg><span><small>Spotify · Podcast</small><b>Ahtapot</b><span class="lang">TR</span></span></a>
+        <a href="https://www.instagram.com/ahtapot.club/" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span><small>Instagram</small><b>@ahtapot.club</b></span></a>
+        <a href="https://www.ahtapot.club/" target="_blank" rel="noopener"><svg><use href="#i-web"/></svg><span><small>Web</small><b>ahtapot.club</b></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© H. Aziz Kayıhan · Content licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></span>
+    <span><a href="http://blog.kayihan.net/" target="_blank" rel="noopener">blog.kayihan.net</a> · <a href="../" hreflang="tr" lang="tr">Türkçe</a></span>
+  </div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var BLOG_ID = '7600596250299023351';
+  var isStory = function(t){ return /^tides?\s+in\s+times/i.test(t); };
+
+  // Posts shown until the feed answers, and kept if it never does.
+  var fallback = [
+    {t:'Tide in Times: 05.09.2026', d:'2026-09-05', u:'http://blog.kayihan.net/2026/09/tide-in-times-05092026.html', s:'"What lies beyond the horizon?..." She sat on the rustic swing, gazing out at the vastness of the ocean, the same thought in her mind.', img:null},
+    {t:'Tides in Times: 23.08.2026', d:'2026-08-23', u:'http://blog.kayihan.net/2026/08/tide-in-times-23082026.html', s:'"Have you ever stepped out of this corner of your life and explored the beauties of the universe?" he asked.', img:null},
+    {t:'Bir Sesleniş, Bir Sessizlik', d:'2026-08-18', u:'http://blog.kayihan.net/2026/08/bir-seslenis-bir-sessizlik.html', s:'Biz hayatımızı yaşarken bir kenarda bıraktıklarımız da bir yandan tutunmaya devam ediyor.'},
+    {t:'Merhaba Dünya v2.0', d:'2023-01-07', u:'http://blog.kayihan.net/2023/01/merhaba-dunya-v20.html', s:'Yazmanın kıymetini zaman zaman hatırlatmam gerekiyor kendime.'},
+    {t:'Merhaba yeni dünya!', d:'2021-01-26', u:'http://blog.kayihan.net/2021/01/merhaba-yeni-dunya.html', s:'Yazıyorum, yazmıyorum derken, verdiğim ara 3 yılı bulmuş.'},
+    {t:'Hayat bazen...', d:'2018-01-16', u:'http://blog.kayihan.net/2018/01/hayat-bazen.html', s:'Bir hikaye dinledim az önce bir dosttan, hayatına dair...'}
+  ];
+
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmt(iso){ var p = iso.split('-'); return +p[2] + ' ' + MONTHS[+p[1]-1] + ' ' + p[0]; }
+  function esc(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML.replace(/"/g,'&quot;'); }
+  function clip(s, n){ s = s.replace(/\s+/g,' ').trim(); if (s.length <= n) return s; return s.slice(0, s.lastIndexOf(' ', n)) + '…'; }
+
+  function render(items){
+    var posts = items.filter(function(x){ return !isStory(x.t); }).slice(0, 4);
+    document.getElementById('posts').innerHTML = posts.map(function(p){
+      return '<li><time datetime="'+p.d+'">'+fmt(p.d)+'</time><div><a class="t" href="'+esc(p.u)+'" target="_blank" rel="noopener">'+esc(p.t)+'</a><span class="lang">TR</span><p>'+esc(clip(p.s, 170))+'</p></div></li>';
+    }).join('');
+  }
+
+
+  // Assemble the email address on load, to keep it away from spam bots.
+  var u = 'aziz', d = 'kayihan.net', m = document.getElementById('mail');
+  if (m) { m.href = 'mailto:' + u + '@' + d; document.getElementById('mail-text').textContent = u + '@' + d; }
+
+
+  // Instagram: show the last 6 posts if a Behold JSON feed is set.
+  Array.prototype.forEach.call(document.querySelectorAll('.ig[data-feed]'), function(panel){
+    var url = panel.getAttribute('data-feed');
+    if (!url) return;
+    fetch(url).then(function(r){ return r.json(); }).then(function(d){
+      var posts = (d.posts || []).slice(0, 6);
+      if (!posts.length) return;
+      panel.querySelector('.ig-grid').innerHTML = posts.map(function(p){
+        var img = (p.sizes && p.sizes.medium && p.sizes.medium.mediaUrl) || p.thumbnailUrl || p.mediaUrl;
+        var alt = p.altText || clip(p.prunedCaption || p.caption || '', 90);
+        return '<a class="tile has-img" href="'+esc(p.permalink)+'" target="_blank" rel="noopener"><img loading="lazy" src="'+esc(img)+'" alt="'+esc(alt)+'"></a>';
+      }).join('');
+    }).catch(function(){ /* keep the profile-linked tiles */ });
+  });
+
+  render(fallback);
+
+  // Live post feed from Blogger (works on kayihan.net).
+  window.hakFeed = function(data){
+    try {
+      var entries = (data.feed && data.feed.entry) || [];
+      var items = entries.map(function(e){
+        var link = (e.link || []).filter(function(l){ return l.rel === 'alternate'; })[0];
+        var thumb = e.media$thumbnail ? e.media$thumbnail.url.replace(/\/s72-[^\/]*\//, '/w600-h400-p-k-no-nu/') : null;
+        return { t: e.title.$t, d: e.published.$t.slice(0,10), u: link ? link.href : 'http://blog.kayihan.net/', s: (e.summary ? e.summary.$t : ''), img: thumb };
+      });
+      if (items.length) render(items);
+    } catch (err) { /* keep the fallback list */ }
+  };
+  var s = document.createElement('script');
+  s.src = 'https://www.blogger.com/feeds/' + BLOG_ID + '/posts/summary?alt=json-in-script&max-results=15&callback=hakFeed';
+  s.async = true;
+  document.body.appendChild(s);
+
+  // Highlight the menu item for the section in view.
+  var links = Array.prototype.slice.call(document.querySelectorAll('.bar a[data-spy]'));
+  var ids = ['about','cv','writing','instagram','life','contact'];
+  function spy(){
+    var cur = 'top';
+    ids.forEach(function(id){ var el = document.getElementById(id); if (el && el.getBoundingClientRect().top < 140) cur = id; });
+    links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-spy') === cur); });
+  }
+  window.addEventListener('scroll', spy, {passive:true});
+  spy();
+})();
+</script>
+</body>
+</html>
