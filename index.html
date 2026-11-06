@@ -380,7 +380,7 @@ section[id]{scroll-margin-top:60px}
       <div class="title"><h2>Instagram</h2></div>
       <!-- @tidesintimes için Behold JSON feed adresini aşağıdaki data-feed içine yapıştırın (https://feeds.behold.so/...). Boş kalırsa kutular profil sayfasına bağlanır. -->
       <div class="igs">
-      <div class="ig" data-feed="">
+      <div class="ig" data-feed="https://feeds.behold.so/uQB1qMwA7jNGVWDD8DhD">
         <div class="ig-head"><svg><use href="#i-instagram"/></svg><div><a class="h" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener">@tidesintimes</a><span class="lang">EN</span><small>Fotoğraflarımdan doğan kısa hikâyeler</small></div><a class="btn" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener">Takip et</a></div>
         <div class="ig-grid"><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes Instagram"><svg><use href="#i-instagram"/></svg></a><a class="tile" href="https://www.instagram.com/tidesintimes/" target="_blank" rel="noopener" aria-label="@tidesintimes Instagram"><svg><use href="#i-instagram"/></svg></a></div>
       </div>
@@ -480,11 +480,14 @@ section[id]{scroll-margin-top:60px}
     fetch(url).then(function(r){ return r.json(); }).then(function(d){
       var posts = (d.posts || []).slice(0, 6);
       if (!posts.length) return;
-      panel.querySelector('.ig-grid').innerHTML = posts.map(function(p){
+      // Altıdan az gönderi varsa kalan kutular profil bağlantısı olarak durur.
+      var grid = panel.querySelector('.ig-grid');
+      var rest = Array.prototype.slice.call(grid.children, posts.length).map(function(t){ return t.outerHTML; }).join('');
+      grid.innerHTML = posts.map(function(p){
         var img = (p.sizes && p.sizes.medium && p.sizes.medium.mediaUrl) || p.thumbnailUrl || p.mediaUrl;
         var alt = p.altText || clip(p.prunedCaption || p.caption || '', 90);
         return '<a class="tile has-img" href="'+esc(p.permalink)+'" target="_blank" rel="noopener"><img loading="lazy" src="'+esc(img)+'" alt="'+esc(alt)+'"></a>';
-      }).join('');
+      }).join('') + rest;
     }).catch(function(){ /* profil bağlantılı kutular kalır */ });
   });
 
