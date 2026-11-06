@@ -458,6 +458,7 @@ section[id]{scroll-margin-top:60px}
   var MONTHS = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
   function fmt(iso){ var p = iso.split('-'); return +p[2] + ' ' + MONTHS[+p[1]-1] + ' ' + p[0]; }
   function esc(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML.replace(/"/g,'&quot;'); }
+  function decode(s){ var t = document.createElement('textarea'); t.innerHTML = s; return t.value; }
   function clip(s, n){ s = s.replace(/\s+/g,' ').trim(); if (s.length <= n) return s; return s.slice(0, s.lastIndexOf(' ', n)) + '…'; }
 
   function render(items){
@@ -500,7 +501,7 @@ section[id]{scroll-margin-top:60px}
       var items = entries.map(function(e){
         var link = (e.link || []).filter(function(l){ return l.rel === 'alternate'; })[0];
         var thumb = e.media$thumbnail ? e.media$thumbnail.url.replace(/\/s72-[^\/]*\//, '/w600-h400-p-k-no-nu/') : null;
-        return { t: e.title.$t, d: e.published.$t.slice(0,10), u: link ? link.href : 'http://blog.kayihan.net/', s: (e.summary ? e.summary.$t : ''), img: thumb };
+        return { t: e.title.$t, d: e.published.$t.slice(0,10), u: link ? link.href : 'http://blog.kayihan.net/', s: (e.summary ? decode(e.summary.$t) : ''), img: thumb };
       });
       if (items.length) render(items);
     } catch (err) { /* yedek liste kalır */ }
